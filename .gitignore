@@ -70,9 +70,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-
-# Stuff that showed up as changes (that I don't really know what they do, so we'll just ignore them to be safe)
-.vsconfig
-Assets/XR/Settings/OpenXR Package Settings.asset
-ProjectSettings/ProjectSettings.asset
-ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
