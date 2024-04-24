@@ -11,8 +11,10 @@ public class TeleportControllerScript : MonoBehaviour
 {
     [SerializeField] 
     private LineRenderer lineRenderer;
+
     [SerializeField] 
     private XRRayInteractor rayInteractor;
+
     [SerializeField] 
     private GameObject player;
   
@@ -55,7 +57,6 @@ public class TeleportControllerScript : MonoBehaviour
     */
     private void Teleport(InputAction.CallbackContext context) {
         rayInteractor.TryGetHitInfo(out Vector3 hitlocation, out Vector3 hitnormal, out int positionInLine, out bool isValidTarget);
-        Debug.Log(hitlocation);
         Vector3 newPosition = new Vector3(hitlocation.x, player.transform.position.y, hitlocation.z);
         player.transform.position = newPosition;
     }

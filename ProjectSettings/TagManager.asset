@@ -36,7 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Interactable
   - Teleport
   m_SortingLayers:
   - name: Default
