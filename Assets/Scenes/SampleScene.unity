@@ -155,8 +155,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &195704640
-CapsuleCollider:
+--- !u!65 &195704644
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -173,10 +173,8 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.06731415
-  m_Height: 0.13426705
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1346283, y: 0.13426705, z: 0.13389081}
   m_Center: {x: 0.000000026077032, y: 0.0000035241246, z: -0.000000011175871}
 --- !u!1001 &231819488
 PrefabInstance:
@@ -248,67 +246,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6762294609841265584, guid: 4e5b6f679f3bc024789186dec0179f9c, type: 3}
   m_PrefabInstance: {fileID: 231819488}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &402668143
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
-      propertyPath: m_Name
-      value: XR Device Simulator
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
 --- !u!1001 &562353939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -378,7 +315,7 @@ PrefabInstance:
       addedObject: {fileID: 195704636}
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 26587ad60ebaa064bb2af5f7559a0b01, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 195704640}
+      addedObject: {fileID: 195704644}
   m_SourcePrefab: {fileID: 100100000, guid: 26587ad60ebaa064bb2af5f7559a0b01, type: 3}
 --- !u!1001 &669130027
 PrefabInstance:
@@ -453,7 +390,7 @@ PrefabInstance:
       addedObject: {fileID: 2035475106}
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 085e99675b720b644bb8c28a8098f35e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2035475110}
+      addedObject: {fileID: 2035475114}
   m_SourcePrefab: {fileID: 100100000, guid: 085e99675b720b644bb8c28a8098f35e, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -1177,8 +1114,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &1324262378
-CapsuleCollider:
+--- !u!65 &1324262382
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1195,10 +1132,8 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.082617976
-  m_Height: 0.2070623
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 0.16523595, y: 0.2070623, z: 0.115627825}
   m_Center: {x: 0.000000037252903, y: 0.0000011511147, z: -0.000000044703484}
 --- !u!1001 &1496709842
 PrefabInstance:
@@ -1640,7 +1575,7 @@ PrefabInstance:
       addedObject: {fileID: 1324262374}
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 085e99675b720b644bb8c28a8098f35e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1324262378}
+      addedObject: {fileID: 1324262382}
   m_SourcePrefab: {fileID: 100100000, guid: 085e99675b720b644bb8c28a8098f35e, type: 3}
 --- !u!1001 &1889859487
 PrefabInstance:
@@ -1790,8 +1725,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &2035475110
-CapsuleCollider:
+--- !u!65 &2035475114
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1808,8 +1743,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.082617976
-  m_Height: 0.2070623
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 0.16523595, y: 0.2070623, z: 0.115627825}
   m_Center: {x: 0.000000037252903, y: 0.0000011511147, z: -0.000000044703484}

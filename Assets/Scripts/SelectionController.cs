@@ -19,11 +19,25 @@ public class SelectionController : MonoBehaviour
 
     private float triggerVal;
     private float gripVal;
+    float initialRotationAngle;
     private Vector3 hitPosition;
     private LayerMask layerMask;
 
+    private void Awake() {
+        trigger.action.Enable();
+        grip.action.Enable();
+        grip.action.performed += InitialRotationAngle;
+    }
 
+    private void OnDisable() {
+        trigger.action.Disable();
+        grip.action.Disable();
+        grip.action.performed -= InitialRotationAngle;
+    }
 
+    public void InitialRotationAngle(InputAction.CallbackContext context){
+        initialRotationAngle = controller.transform.rotation.eulerAngles.y;
+    }
     private void FixedUpdate()
     {
         triggerVal = trigger.action.ReadValue<float>();
@@ -43,6 +57,7 @@ public class SelectionController : MonoBehaviour
                     lineRenderer.startColor = Color.blue;
                     hit.rigidbody.useGravity = false;
                     hit.collider.gameObject.transform.position = controller.transform.position + controller.transform.forward * 0.1f;
+                    hit.collider.gameObject.transform.rotation = controller.transform.rotation;
                 }
                 else{
                     hit.rigidbody.useGravity = true;
@@ -50,6 +65,11 @@ public class SelectionController : MonoBehaviour
 
                 if(gripVal > 0.1f){
                     lineRenderer.startColor = Color.yellow;
+                    hit.rigidbody.useGravity = false;
+                    Vector3 currScale = hit.collider.gameObject.transform.localScale;
+                    float scaleMultiplier = (controller.transform.rotation.eulerAngles.y - initialRotationAngle) / 100000.0f;
+                    Vector3 newScale = new Vector3(currScale.x + scaleMultiplier, currScale.y + scaleMultiplier, currScale.z + scaleMultiplier);
+                    hit.collider.gameObject.transform.localScale = newScale;
                 }
             }
             else{
