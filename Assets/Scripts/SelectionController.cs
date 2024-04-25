@@ -21,12 +21,17 @@ public class SelectionController : MonoBehaviour
     private void Update()
     {
         triggerVal = trigger.action.ReadValue<float>();
+        var ray = new Ray(controller.transform.position, controller.transform.forward);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity)){
+            hitPosition = hit.point;
+            lineRenderer.SetPosition(0, controller.transform.position);
+            lineRenderer.SetPosition(1, hitPosition);
+        }
+
         if (triggerVal > 0.1f) {
-            var ray = new Ray(controller.transform.position, controller.transform.forward);
-            RaycastHit hit;
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity)){
-                Debug.Log("Hit point: " + hit.transform);
-            }
+            lineRenderer.startColor = Color.red;
+            lineRenderer.endColor = Color.red;
         } 
     }
 }
