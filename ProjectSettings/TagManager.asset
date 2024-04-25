@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Teleport
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -36,7 +37,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Interactable
   - Teleport
   m_SortingLayers:
   - name: Default
