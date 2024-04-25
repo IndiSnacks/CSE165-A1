@@ -1426,6 +1426,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SpawnButton2",
+                    "type": "Button",
+                    "id": "5af13709-e8d5-45b4-bcb7-5ecc3b38fbb6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1580,6 +1589,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "SpawnButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39bfe38c-ea6e-44c6-90f1-0f365bb2eebf",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "SpawnButton2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

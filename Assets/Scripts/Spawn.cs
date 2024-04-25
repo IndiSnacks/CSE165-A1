@@ -7,41 +7,52 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Spawn : MonoBehaviour
 {
-    public InputActionReference aButton;
-    private float aButtonVal;
+    public InputActionReference button;
+    private float buttonVal;
     private bool justPressed;
 
+    public GameObject spawnPoint;
+
     public GameObject prefab;
+    private GameObject clone;
 
     // Start is called before the first frame update
     private void Awake()
     {
         justPressed = false;
-        aButton.action.Enable();
+        button.action.Enable();
     }
 
     private void OnDestroy()
     {
-        aButton.action.Disable();
+        button.action.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        aButtonVal = aButton.action.ReadValue<float>();
-        if (aButtonVal > 0.1f)
+        buttonVal = button.action.ReadValue<float>();
+        if (buttonVal > 0.1f)
         {
             if (!justPressed)
             {
                 justPressed = true;
-                Debug.Log("A button was just pressed.");
-                Instantiate(prefab, transform.position, transform.rotation);
+                // Debug.Log("A button was just pressed.");
+                clone = Instantiate(prefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
             }
+
+            clone.transform.position = spawnPoint.transform.position;
+            clone.transform.rotation = spawnPoint.transform.rotation;
         }
         else
         {
-            justPressed = false;
-            Debug.Log("A button is NOT pressed.");
+            if (justPressed)
+            {
+                clone.AddComponent<Rigidbody>();
+                clone = null;
+                justPressed = false;
+            }
+            // Debug.Log("A button is NOT pressed.");
         }
     }
 }
