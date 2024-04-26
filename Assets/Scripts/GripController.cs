@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class SelectionController : MonoBehaviour
+public class GripController : MonoBehaviour
 {
     private Rigidbody prevHit;
     private Rigidbody currHit;
@@ -17,24 +17,33 @@ public class SelectionController : MonoBehaviour
     private GameObject controller;
 
     [SerializeField]
-    private InputActionReference trigger;
+    private GameObject otherController;
 
-    private float triggerVal;
+    [SerializeField]
+    private InputActionReference grip;
+
+    [SerializeField]
+    private InputActionReference secondGrip;
+
+    private float gripVal;
+    private float secondGripVal;   
     float initialRotationAngle;
     private Vector3 hitPosition;
     private LayerMask layerMask;
-    
-    private float distToHit;
-    private bool justPressedTrigger = false;
+
+    private float forwardScalar;
+    private bool justPressedGrip = false;
     private Rigidbody heldObject;
 
+    private bool justPressedSecondGrip = false;
+    private float initialMagnitude = -1f;
 
     private void Awake() {
-        trigger.action.Enable();
+        grip.action.Enable();
     }
 
     private void OnDisable() {
-        trigger.action.Disable();
+        grip.action.Disable();
     }
 
     public void InitialRotationAngle(InputAction.CallbackContext context){
@@ -42,7 +51,8 @@ public class SelectionController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        triggerVal = trigger.action.ReadValue<float>();
+        gripVal = grip.action.ReadValue<float>();
+        secondGripVal = secondGrip.action.ReadValue<float>();
 
         var ray = new Ray(controller.transform.position, controller.transform.forward);
         RaycastHit hit;
@@ -59,11 +69,10 @@ public class SelectionController : MonoBehaviour
                 currHit = hit.rigidbody;
                 currHit.GetComponent<Outline>().enabled = true;
 
-                if (triggerVal > 0.1f)
+                if (gripVal > 0.1f)
                 {
-                    if (!justPressedTrigger)
+                    if (!justPressedGrip)
                     {
-                        distToHit = (controller.transform.position - hit.point).magnitude;
                         heldObject = currHit;
                         heldObject.useGravity = false;
                     }
@@ -88,18 +97,33 @@ public class SelectionController : MonoBehaviour
             lineRenderer.SetPosition(1, controller.transform.position + controller.transform.forward * 30f);
         }
 
-        if (triggerVal > 0.1f)
+        if (gripVal > 0.1f)
         {
-            if (!justPressedTrigger)
+            if (!justPressedGrip)
             {
-                justPressedTrigger = true;
+                justPressedGrip = true;
             }
             lineRenderer.startColor = Color.blue;
             if (heldObject != null)
             {
-                heldObject.transform.position = controller.transform.position + controller.transform.forward * distToHit;
+                heldObject.transform.position = controller.transform.position + controller.transform.forward * forwardScalar;
                 heldObject.transform.rotation = controller.transform.rotation;
             }
+            if (secondGripVal > 0.1f)
+            {
+                if (!justPressedSecondGrip)
+                {
+                    justPressedSecondGrip = true;
+                    initialMagnitude = (controller.transform.position - otherController.transform.position).magnitude;
+                }
+                if (initialMagnitude != -1f)
+                {
+                    float currentMagnitude = (controller.transform.position - otherController.transform.position).magnitude;
+                    float currentScale = currentMagnitude / initialMagnitude;
+                    heldObject.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
+                }
+            }
+            
         }
         else
         {
@@ -107,8 +131,13 @@ public class SelectionController : MonoBehaviour
             {
                 heldObject.useGravity = true;
             }
-            justPressedTrigger = false;
+            justPressedGrip = false;
             heldObject = null;
+        }
+        if (!(secondGripVal > 0.1f))
+        {
+            initialMagnitude = -1f;
+            justPressedSecondGrip = false;
         }
     }
 }
