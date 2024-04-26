@@ -17,9 +17,16 @@ public class SelectionController : MonoBehaviour
     private GameObject controller;
 
     [SerializeField]
+    private GameObject otherController;
+
+    [SerializeField]
     private InputActionReference trigger;
 
+    [SerializeField]
+    private InputActionReference secondTrigger;
+
     private float triggerVal;
+    private float secondTriggerVal;
     float initialRotationAngle;
     private Vector3 hitPosition;
     private LayerMask layerMask;
@@ -28,6 +35,8 @@ public class SelectionController : MonoBehaviour
     private bool justPressedTrigger = false;
     private Rigidbody heldObject;
 
+    private bool justPressedSecondTrigger = false;
+    private float initialMagnitude = -1f;
 
     private void Awake() {
         trigger.action.Enable();
@@ -100,6 +109,17 @@ public class SelectionController : MonoBehaviour
                 heldObject.transform.position = controller.transform.position + controller.transform.forward * distToHit;
                 heldObject.transform.rotation = controller.transform.rotation;
             }
+
+            // Two-hand manipulation
+            /*if (secondTriggerVal > 0.1f)
+            {
+                if (!justPressedSecondTrigger)
+                {
+                    justPressedSecondTrigger = true;
+                    // heldObject.transform.position = newPosition;
+                    // heldObject.transform.rotation = ;
+                }
+            }*/
         }
         else
         {

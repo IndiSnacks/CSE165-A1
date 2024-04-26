@@ -109,6 +109,8 @@ public class GripController : MonoBehaviour
                 heldObject.transform.position = controller.transform.position + controller.transform.forward * forwardScalar;
                 heldObject.transform.rotation = controller.transform.rotation;
             }
+
+            // Two-hand Scaling
             if (secondGripVal > 0.1f)
             {
                 if (!justPressedSecondGrip)

@@ -16,6 +16,11 @@ public class Spawn : MonoBehaviour
     public GameObject prefab;
     private GameObject clone;
 
+    public void SwapPrefab(GameObject newPrefab)
+    {
+        prefab = newPrefab;
+    }
+
     // Start is called before the first frame update
     private void Awake()
     {
